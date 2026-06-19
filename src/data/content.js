@@ -1,11 +1,11 @@
-const githubUrl = https://github.com/bhatiyaakshita303;
+const githubUrl = "https://github.com/bhatiyaakshita303" ;
 
 export const CONTACT = {
   name: "Akshita Bhatiya",
-  email: bhatiyaakshita303@gmail.com,
+  email: "bhatiyaakshita303@gmail.com",
   github: githubUrl,
   githubHandle: githubUrl.replace(/^https?:\/\//, ""),
-  location: India,
+  location: "India",
 };
 
 export const PROJECTS = [
