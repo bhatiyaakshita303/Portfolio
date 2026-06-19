@@ -1,4 +1,4 @@
-const githubUrl = "https://github.com/your-username";
+const githubUrl = "https://github.com/bhatiyaakshita303";
 
 export const CONTACT = {
   name: "Akshita Bhatiya",
