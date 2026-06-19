@@ -1,11 +1,11 @@
-const githubUrl = process.env.REACT_APP_GITHUB_URL || "https://github.com/your-username";
+const githubUrl = https://github.com/bhatiyaakshita303;
 
 export const CONTACT = {
   name: "Akshita Bhatiya",
-  email: process.env.REACT_APP_CONTACT_EMAIL || "your-email@example.com",
+  email: bhatiyaakshita303@gmail.com,
   github: githubUrl,
   githubHandle: githubUrl.replace(/^https?:\/\//, ""),
-  location: process.env.REACT_APP_LOCATION || "Your City, Country",
+  location: India,
 };
 
 export const PROJECTS = [

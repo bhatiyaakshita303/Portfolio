@@ -48,22 +48,6 @@ is **not hardcoded** in the source code. It's read from a `.env` file at
 the project root, which is already listed in `.gitignore`, so it will
 **never** be pushed to GitHub.
 
-`.env` (already created for you locally):
-```
-REACT_APP_CONTACT_EMAIL=bhatiyaakshita303@gmail.com
-REACT_APP_GITHUB_URL=https://github.com/bhatiyaakshita303
-REACT_APP_LOCATION=India
-```
-
-`.env.example` is the public template (safe to commit) that shows which
-variables are required, without exposing your real values. Anyone who
-clones the repo copies `.env.example` to `.env` and fills in their own
-details.
-
-> Note: Create React App only exposes environment variables that start
-> with `REACT_APP_` to the browser. Any variable without that prefix is
-> ignored on purpose.
-
 ## 🚀 Running in VS Code (step by step)
 
 ### 1. Open the project in VS Code
