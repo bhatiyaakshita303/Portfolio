@@ -110,8 +110,6 @@
 
 
 
-
-
 import React, { useState } from "react";
 import { Mail, MapPin, Github, Send, CheckCircle2 } from "lucide-react";
 import Tag from "../components/Tag";
@@ -122,23 +120,49 @@ import "../styles/AboutContactFooter.css";
 export default function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false); // 1. Yahan loading state add ki hai
 
   const onChange = (e) =>
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
-  // Form submit hone par jab tak page refresh nahi hota tab tak ke liye check
-  const onSubmit = () => {
-    // Local storage me state save kar rahe hain taaki refresh ke baad success message dikhe
-    localStorage.setItem("formSubmitted", "true");
-  };
+  // 2. Is onSubmit function ko maine poora badal diya hai
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
 
-  // Check karein agar form abhi submit hua hai
-  React.useEffect(() => {
-    if (localStorage.getItem("formSubmitted") === "true") {
-      setSent(true);
-      localStorage.removeItem("formSubmitted"); // State reset
+    const formData = {
+      // .env file se key uthane ke liye (Aapka code GitHub par safe rahega)
+      access_key: import.meta.env.VITE_WEB3FORMS_KEY || "YOUR_FALLBACK_KEY_IF_CRA_USE_PROCESS_ENV", 
+      name: form.name,
+      email: form.email,
+      message: form.message,
+    };
+
+    try {
+      const response = await fetch("https://web3forms.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const resData = await response.json();
+
+      if (resData.success) {
+        setSent(true);
+        setForm({ name: "", email: "", message: "" }); // Form clear karne ke liye
+      } else {
+        alert("Something went wrong: " + resData.message);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Failed to send message. Please check internet connection.");
+    } finally {
+      setLoading(false);
     }
-  }, []);
+  };
 
   return (
     <section className="section page-top">
@@ -170,17 +194,7 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* BADLAV YAHAN HAI: Action aur Method ko direct form me add kiya hai */}
-          <form 
-            className="contact-form" 
-            action={`https://formsubmit.co{CONTACT.email}`} 
-            method="POST"
-            onSubmit={onSubmit}
-          >
-            {/* FormSubmit ke features control karne ke liye hidden inputs */}
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_next" value={window.location.href} />
-
+          <form className="contact-form" onSubmit={onSubmit}>
             {sent ? (
               <div className="form-success">
                 <CheckCircle2 size={28} className="text-accent" />
@@ -224,8 +238,13 @@ export default function ContactPage() {
                     required
                   />
                 </label>
-                <button className="btn btn-primary btn-block" type="submit">
-                  Send message <Send size={15} />
+                {/* 3. Button ko update kiya hai taaki loading ke samay 'Sending...' dikhe */}
+                <button 
+                  className="btn btn-primary btn-block" 
+                  type="submit" 
+                  disabled={loading}
+                >
+                  {loading ? "Sending..." : <>Send message <Send size={15} /></>}
                 </button>
               </>
             )}
