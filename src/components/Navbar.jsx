@@ -34,7 +34,7 @@ export default function Navbar() {
       <div className="navbar-inner">
         <Link to="/" className="brand">
           <span className="brand-prompt mono">~/</span>
-          <span className="brand-name">Akshita.dev</span>
+          <span className="brand-name">Akshita</span>
         </Link>
 
         {/* Desktop links */}

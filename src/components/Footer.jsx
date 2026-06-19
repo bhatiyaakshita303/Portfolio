@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="container footer-inner">
         <Link to="/" className="brand">
           <span className="brand-prompt mono">~/</span>
-          <span className="brand-name">Akshita.dev</span>
+          <span className="brand-name">Akshita</span>
         </Link>
         <p className="mono footer-note">
           Built with React.js · {new Date().getFullYear()}
