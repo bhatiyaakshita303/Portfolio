@@ -125,6 +125,31 @@
   color: var(--text-dim);
   overflow-x: auto;
   white-space: pre;
+  -webkit-overflow-scrolling: touch; /* smooth momentum scroll on iOS */
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) transparent;
+}
+.code-window-body::-webkit-scrollbar {
+  height: 6px;
+}
+.code-window-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+.code-window-body::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 999px;
+}
+.code-window-body::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+@media (max-width: 919px) {
+  .code-window {
+    position: relative;
+  }
+  .code-window-body {
+    font-size: 12px;
+  }
 }
 
 @media (min-width: 920px) {
