@@ -1,0 +1,141 @@
+/* ---------- About ---------- */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin: 32px 0 48px;
+}
+@media (min-width: 640px) {
+  .about-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.about-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  color: var(--accent);
+}
+.about-card h3 {
+  font-family: var(--font-display);
+  color: var(--text);
+  font-size: 16px;
+  margin: 14px 0 8px;
+}
+.about-card p {
+  color: var(--text-dim);
+  font-size: 14.5px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ---------- Contact ---------- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  margin-top: 36px;
+}
+@media (min-width: 760px) {
+  .contact-grid {
+    grid-template-columns: 0.85fr 1.15fr;
+  }
+}
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.contact-info-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-dim);
+  font-size: 14.5px;
+}
+.contact-info-row svg {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.contact-info-row a {
+  color: var(--text-dim);
+  text-decoration: none;
+}
+.contact-info-row a:hover {
+  color: var(--accent);
+}
+
+.contact-form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  font-size: 13px;
+  color: var(--text-dim);
+}
+.field input,
+.field textarea {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 11px 13px;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 14px;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.18s ease;
+}
+.field input:focus,
+.field textarea:focus {
+  border-color: var(--accent);
+}
+.form-success {
+  text-align: center;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.form-success h3 {
+  font-family: var(--font-display);
+  margin: 6px 0 0;
+}
+.form-success p {
+  color: var(--text-dim);
+  font-size: 14px;
+  margin: 0;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 28px 0;
+}
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.footer-note {
+  color: var(--text-faint);
+  font-size: 12.5px;
+}
+.footer-github {
+  color: var(--text-dim);
+}
+.footer-github:hover {
+  color: var(--accent);
+}

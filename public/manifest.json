@@ -1,0 +1,9 @@
+{
+  "short_name": "Akshita Portfolio",
+  "name": "Akshita Bhatiya - MERN Stack Developer Portfolio",
+  "icons": [],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#0B0F14",
+  "background_color": "#0B0F14"
+}
