@@ -1,9 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-
-/**
- * Wraps children and fades/slides them in once they scroll into view.
- * Usage: <RevealOnScroll delay={100}><div>...</div></RevealOnScroll>
- */
 export default function RevealOnScroll({
   children,
   className = "",

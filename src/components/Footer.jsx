@@ -8,7 +8,6 @@ export default function Footer() {
     <footer className="footer">
       <div className="container footer-inner">
         <Link to="/" className="brand">
-          <span className="brand-prompt mono">~/</span>
           <span className="brand-name">Akshita</span>
         </Link>
         <p className="mono footer-note">
