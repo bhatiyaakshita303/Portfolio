@@ -12,13 +12,34 @@ export default function ContactPage() {
   const onChange = (e) =>
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
-  const onSubmit = (e) => {
+  const [loading, setLoading] = useState(false); 
+
+  const onSubmit = async (e) => { 
     e.preventDefault();
-    // This is a front-end-only demo form. To wire it up for real,
-    // connect it to a backend route (e.g. an Express + Nodemailer API)
-    // or a form service like Formspree / EmailJS.
-    setSent(true);
+    setLoading(true);
+
+    try {
+      const response = await fetch(`https://formsubmit.co{CONTACT.email}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          Name: form.name,
+          Email: form.email,
+          Message: form.message
+        })
+      });
+
+      if (response.ok) {
+        setSent(true);
+        setForm({ name: "", email: "", message: "" });
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
   };
+
 
   return (
     <section className="section page-top">
@@ -56,8 +77,8 @@ export default function ContactPage() {
                 <CheckCircle2 size={28} className="text-accent" />
                 <h3>Message noted</h3>
                 <p>
-                  This is a demo form — to actually reach me, please email
-                  directly at {CONTACT.email}.
+                  Your form has been submitted successfully. Thank you for reaching out!
+                  I will get back to you as soon as possible {CONTACT.email}.
                 </p>
               </div>
             ) : (
