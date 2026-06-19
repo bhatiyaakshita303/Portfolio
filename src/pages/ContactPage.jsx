@@ -120,18 +120,16 @@ import "../styles/AboutContactFooter.css";
 export default function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [sent, setSent] = useState(false);
-  const [loading, setLoading] = useState(false); // 1. Yahan loading state add ki hai
+  const [loading, setLoading] = useState(false);
 
   const onChange = (e) =>
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
-  // 2. Is onSubmit function ko maine poora badal diya hai
   const onSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     const formData = {
-      // .env file se key uthane ke liye (Aapka code GitHub par safe rahega)
       access_key: import.meta.env.VITE_WEB3FORMS_KEY || "YOUR_FALLBACK_KEY_IF_CRA_USE_PROCESS_ENV", 
       name: form.name,
       email: form.email,
@@ -152,7 +150,7 @@ export default function ContactPage() {
 
       if (resData.success) {
         setSent(true);
-        setForm({ name: "", email: "", message: "" }); // Form clear karne ke liye
+        setForm({ name: "", email: "", message: "" }); 
       } else {
         alert("Something went wrong: " + resData.message);
       }
@@ -238,7 +236,6 @@ export default function ContactPage() {
                     required
                   />
                 </label>
-                {/* 3. Button ko update kiya hai taaki loading ke samay 'Sending...' dikhe */}
                 <button 
                   className="btn btn-primary btn-block" 
                   type="submit" 
