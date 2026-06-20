@@ -130,7 +130,7 @@ export default function ContactPage() {
     setLoading(true);
 
     const formData = {
-      access_key: import.meta.env.VITE_WEB3FORMS_KEY, 
+      access_key: process.env.REACT_APP_WEB3FORMS_KEY, 
       name: form.name,
       email: form.email,
       message: form.message,
