@@ -130,14 +130,14 @@ export default function ContactPage() {
     setLoading(true);
 
     const formData = {
-      access_key: import.meta.env.VITE_WEB3FORMS_KEY || "YOUR_FALLBACK_KEY_IF_CRA_USE_PROCESS_ENV", 
+      access_key: import.meta.env.VITE_WEB3FORMS_KEY, 
       name: form.name,
       email: form.email,
       message: form.message,
     };
 
     try {
-      const response = await fetch("https://web3forms.com", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
